@@ -31,7 +31,7 @@ const IconContainer = styled(motion.a)`
   align-items: center;
   width: 36px;
   height: 36px;
-  margin-right: ${({ mr }) => mr ? '8px' : 0};
+  margin-right: ${({ mr }) => (mr ? "8px" : 0)};
   border: 1px solid ${({ theme }) => theme.colors.borders};
   cursor: pointer;
 `;
@@ -56,6 +56,7 @@ const CodesandboxIcon = styled(Codesandbox)`
 const CreatedBy = styled.p`
   ${iconStyle};
   margin-top: 16px;
+  font-size: 14px;
   text-align: center;
 `;
 
@@ -89,17 +90,28 @@ const Footer = () => {
         >
           <LinkedinIcon size="24" />
         </IconContainer>
-        <IconContainer whileHover={iconHover} mr >
+        <IconContainer
+          whileHover={iconHover}
+          href="https://codepen.io/daltronp"
+          target="_blank"
+          rel="noopener noreferrer"
+          mr
+        >
           <CodepenIcon size="24" />
         </IconContainer>
-        <IconContainer whileHover={iconHover}>
+        <IconContainer
+          whileHover={iconHover}
+          href="https://codesandbox.io/u/daltonp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <CodesandboxIcon size="24" />
         </IconContainer>
       </Center>
       <CreatedBy>
         Created by{" "}
         <RepoLink
-          href="https://github.com/notlad-p/react-portfolio"
+          href="https://github.com/notlad-p/portfolio-v2"
           target="_blank"
           rel="noopener noreferrer"
         >
