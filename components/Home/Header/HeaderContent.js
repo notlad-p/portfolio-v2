@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
+import { Link } from "react-scroll";
 
 import Button from "../../Button";
 
@@ -27,17 +28,17 @@ const Container = styled(motion.div)`
     width: 348px;
     margin: 0 auto;
     transform: translate(-50%, -50%);
-  };
+  }
 
   @media (max-width: 408px) {
     left: 47.5%;
     transform: scale(0.9) translate(-50%, -50%);
-  }; 
+  }
 
   @media (max-width: 332px) {
     transform: scale(0.8) translate(-50%, -50%);
     transform-origin: 0%;
-  }; 
+  } ;
 `;
 
 const Title = styled(motion.p)`
@@ -66,7 +67,7 @@ const Text = styled(motion.p)`
 `;
 
 const HeaderContent = () => {
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 408px)'});
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 408px)" });
 
   const container = {
     hidden: { opacity: 0 },
@@ -80,8 +81,16 @@ const HeaderContent = () => {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 16, clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-    show: { opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
+    hidden: {
+      opacity: 0,
+      y: 16,
+      clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    },
   };
 
   return (
@@ -92,10 +101,14 @@ const HeaderContent = () => {
       <Text variants={item}>
         I'm a developer who enjoys building web stuff.
       </Text>
-      <Button variants={item} style={{ marginRight: "16px" }}>
-        Projects
-      </Button>
-      <Button variants={item}>Contact</Button>
+      <Link containerId="scroll" to="projects" smooth offset={-64} >
+        <Button variants={item} style={{ marginRight: "16px" }}>
+          Projects
+        </Button>
+      </Link>
+      <Link containerId="scroll" to="contact" smooth>
+        <Button variants={item}>Contact</Button>
+      </Link>
     </Container>
   );
 };

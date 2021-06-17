@@ -122,7 +122,7 @@ const Contact = () => {
       // OR ADD ANIMATION TO HEADING
 
   return (
-    <SectionContainer>
+    <SectionContainer id='contact' >
       <HeadingContainer>
         <Heading text="Contact" />
         <CopyEmail />

@@ -73,10 +73,7 @@ const Canvas = () => {
   const scrollRef = useRef();
   const scroll = useRef(0);
   const doScroll = (e) => {
-    console.log(e)
-    return (
-      scroll.current = e.target.scrollTop / e.target.scrollHeight
-    )
+    return (scroll.current = e.target.scrollTop / e.target.scrollHeight);
   };
   return (
     <>
@@ -96,7 +93,7 @@ const Canvas = () => {
           </ScrollContainer>
         </Suspense>
       </C>
-      <Scroll ref={scrollRef} onScroll={doScroll}>
+      <Scroll ref={scrollRef} onScroll={doScroll} id='scroll' >
         <Header />
         <Projects />
         <Contact />

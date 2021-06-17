@@ -5,7 +5,7 @@ import SectionContainer from "../SectionContainer";
 
 const Projects = () => {
   return (
-    <SectionContainer >
+    <SectionContainer id='projects' >
       <Heading text="Projects" />
       {data.map(
         ({ title, description, image, tech, githubLink, projectLink }, i) => (
