@@ -1,19 +1,11 @@
 import { useRef, useState } from "react";
+import * as THREE from 'three';
 import { useFrame } from "@react-three/fiber";
-import { useTransition, a } from "@react-spring/three";
+import { useTransition, a, useTrail } from "@react-spring/three";
 import { MeshWobbleMaterial } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 
-// MOUNT ANIMATION
-// https://codesandbox.io/s/mount-transitions-1sccp?file=/src/App.js
-
-// create items array: torus's for planet ring & sphere for planet
-
-// Geometry component used when mapping 'trasition'
-
-// Planet (Geometries) component to group rings & planet, and applying the mount trasition
-
-const Ring = ({ show, ...props }) => {
+const Ring = ({ show, rotation, args, delay, ...props }) => {
   const mesh = useRef();
 
   useFrame(() => {
@@ -24,7 +16,8 @@ const Ring = ({ show, ...props }) => {
     from: { position: [0, 1.25, 0] },
     enter: { position: [0, 0.25, 0] },
     leave: { position: [0, -1.25, 0] },
-    config: { mass: 2, friction: 20 },
+    config: { mass: 1, friction: 20, },
+    delay: delay,
   });
 
   return transition(({ position }) => (
@@ -32,13 +25,14 @@ const Ring = ({ show, ...props }) => {
       ref={mesh}
       {...props}
       position={position}
-      rotation={[2, -0.5, 0]}
+      rotation={rotation}
       receiveShadow
     >
-      <torusGeometry args={[2.5, 0.01, 2, 300]} />
-      <pointsMaterial color="#4F4E4D" size={0.005} />
+      <ringGeometry args={args} />
+      <pointsMaterial color="#4F4E4D" size={0.0075} />
     </a.points>
   ));
+
 };
 
 const PlanetSphere = ({ show, ...props }) => {
@@ -69,9 +63,19 @@ const Planet = () => {
   const [show] = useState(false);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 832px)" });
 
+  const ringCount = 15;
+  const ringArr = Array.from(Array(ringCount).keys()).map((i) => ({
+    rotation: [THREE.MathUtils.degToRad(115), THREE.MathUtils.degToRad(-30), (i * Math.random() * 100)],
+    args: [i * .03 + 2.5, i * .04 + 2.51, 250],
+    delay: i * 25,
+  }));
+
   return (
     <group position={isSmallScreen ? [0, 1, 0] : [2.5, 0, 0]}>
-      <Ring show={show} />
+      <Ring show={show} count={10} />
+      {ringArr.map(({ rotation, args, delay }) => (
+        <Ring show={show} rotation={rotation} args={args} delay={delay}  />
+      ))}
       <PlanetSphere show={show} />
       <pointLight
         color={0xffffff}
