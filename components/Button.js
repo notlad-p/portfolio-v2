@@ -1,22 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const TestButton = styled.button`
-  width: 100px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  background-color: rgba(51, 149, 214, 0.15);
-  border: none;
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 14px;
-  clip-path: polygon(16% 0, 100% 0, 100% 60%, 84% 100%, 0 100%, 0 40%);
-  cursor: pointer;
-`;
-
 const BorderButton = styled(motion.button)`
   width: 101px;
-  height: 40px;
+  height: 41px;
   padding: 0;
   margin: 0;
   background: url("/border.png");
@@ -39,14 +26,7 @@ const TextButton = styled(motion.button)`
   cursor: pointer;
 `;
 
-const Button = ({ children, style, text, variants, test }) => {
-  if(test) {
-    return (
-      <TestButton>
-        {children}
-      </TestButton>
-    )
-  }
+const Button = ({ children, style, text, variants }) => {
   if (text) {
     return (
       <TextButton
