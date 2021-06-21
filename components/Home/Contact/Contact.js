@@ -1,14 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { ContentCopy } from "@styled-icons/material-sharp/ContentCopy";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useInView } from "react-intersection-observer";
+import axios from "axios";
 
 import SectionContainer from "../SectionContainer";
 import Heading from "../../Heading/Heading";
+import CopyEmail from "./CopyEmail";
 import TextInput from "../../Inputs/TextInput";
 import Button from "../../Button";
+import SubmitNotification from "./SubmitNotification";
 
 const Form = styled(motion.form)`
   display: flex;
@@ -22,86 +23,28 @@ const HeadingContainer = styled.div`
   width: 100%;
 `;
 
-const CopyContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 40px;
-`;
-
-const IconContainer = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border-radius: 100%;
-  cursor: pointer;
-`;
-
-const CopyIcon = styled(ContentCopy)`
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const CopyHeading = styled(motion.h3)`
-  display: inline;
-  margin: 0;
-  margin-left: 4px;
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
-const CopyEmail = () => {
-  const [hover, setHover] = useState(false);
-  const [copied, setCopied] = useState(false);
-
-  const handleMouseOver = () => setHover(true);
-  const handleMouseOut = () => setHover(false);
-
-  const heading = {
-    hover: {
-      color: "#E9E9E9",
-    },
-    default: {
-      color: "#A6A6A6",
-    },
-    copied: {
-      color: '#3395D6',
-      opacity: 0.7,
-    }
-  };
-
-  return (
-    <CopyContainer>
-      <CopyToClipboard
-        text={"contact@daltonp.dev"}
-        onCopy={() => setCopied(true)}
-      >
-        <IconContainer
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-          whileHover={{
-            backgroundColor: "rgba(51, 149, 214, 0.1)",
-            scale: 1.1,
-          }}
-          whileTap={{ scale: 1 }}
-        >
-          <CopyIcon data-tip data-for='copy' size="18" />
-        </IconContainer>
-      </CopyToClipboard>
-      <CopyHeading animate={copied ? 'copied' : hover ? "hover" : "default"} variants={heading}>
-        contact@daltonp.dev
-      </CopyHeading>
-    </CopyContainer>
-  );
-};
-
 const Contact = () => {
-
+  const [formVals, setFormVals] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({
+    pending: false,
+    success: false,
+    error: false,
+  });
   const { ref, inView } = useInView({
     threshold: 1,
     triggerOnce: true,
   });
-  
+
+  const onChange = (e) => {
+    setFormVals((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
   const form = {
-    hidden: {  },
+    hidden: {},
     show: {
       transition: {
         staggerChildren: 0.1,
@@ -111,30 +54,92 @@ const Contact = () => {
   };
 
   const input = {
-    hidden: { opacity: 0, y: 16, clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-    show: { opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
-  }
+    hidden: {
+      opacity: 0,
+      y: 16,
+      clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    },
+  };
 
-  // REMOVE ALL ANIMATION HERE
+  // resets status after 1.5sec for SubmitNotification exit animation
+  const resetStatus = () => {
+    setTimeout(() => {
+      setStatus({ pending: false, success: false, error: false });
+    }, 1500);
+  };
 
-  // ADD ANIMATION FOR WHOLE CONTACT SECTION
-    // ANIMATION ON SECTION HEADER??
-      // OR ADD ANIMATION TO HEADING
+  const sendEmail = (e) => {
+    e.preventDefault();
+    // set pending state
+    setStatus((state) => ({ ...state, pending: true }));
+
+    // send request
+    axios
+      .post("http://localhost:3000/api/contact", formVals)
+      .then((res) => {
+        console.log(res);
+        if (res.data === "sent") {
+          setStatus((state) => ({ ...state, success: true, pending: false }));
+          resetStatus();
+          setFormVals({ name: "", email: "", message: "" });
+        } else {
+          setStatus((state) => ({ ...state, error: true, pending: false }));
+          resetStatus();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setStatus((state) => ({ ...state, error: true, pending: false }));
+        resetStatus();
+      });
+  };
 
   return (
-    <SectionContainer id='contact' >
+    <SectionContainer id="contact">
       <HeadingContainer>
         <Heading text="Contact" />
         <CopyEmail />
       </HeadingContainer>
-      <Form ref={ref} variants={form} animate={inView ? 'show' : 'hidden'} >
-        <TextInput variants={input} type="text" id="name" />
-        <TextInput variants={input} type="email" id="email" />
-        <TextInput variants={input} id="message" textarea />
-        <motion.div variants={input} style={{ marginLeft: "auto", marginTop: "16px" }}>
+      <Form
+        ref={ref}
+        variants={form}
+        animate={inView ? "show" : "hidden"}
+        onSubmit={sendEmail}
+      >
+        <TextInput
+          value={formVals.name}
+          onChange={onChange}
+          variants={input}
+          type="text"
+          id="name"
+        />
+        <TextInput
+          value={formVals.email}
+          onChange={onChange}
+          variants={input}
+          type="email"
+          id="email"
+        />
+        <TextInput
+          value={formVals.message}
+          onChange={onChange}
+          variants={input}
+          id="message"
+          textarea
+        />
+        <motion.div
+          variants={input}
+          style={{ marginLeft: "auto", marginTop: "16px" }}
+        >
           <Button>Submit</Button>
         </motion.div>
       </Form>
+      <SubmitNotification status={status} />
     </SectionContainer>
   );
 };
