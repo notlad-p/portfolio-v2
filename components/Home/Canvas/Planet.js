@@ -73,8 +73,8 @@ const Planet = () => {
   return (
     <group position={isSmallScreen ? [0, 1, 0] : [2.5, 0, 0]}>
       <Ring show={show} count={10} />
-      {ringArr.map(({ rotation, args, delay }) => (
-        <Ring show={show} rotation={rotation} args={args} delay={delay}  />
+      {ringArr.map(({ rotation, args, delay }, i) => (
+        <Ring key={i} show={show} rotation={rotation} args={args} delay={delay}  />
       ))}
       <PlanetSphere show={show} />
       <pointLight
