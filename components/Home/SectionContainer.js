@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const SectionContainer = styled.div`
+  position: relative;
   max-width: 1000px;
   margin: 64px auto;
 
