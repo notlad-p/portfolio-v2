@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { InputContainer, Label } from './TextInput';
+import { InputContainer, Label } from "./TextInput";
 
 const StyledTextarea = styled.textarea`
   width: 100%;
@@ -21,9 +21,18 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
-const Textarea = ({ id, label, focus, input, onChange, onFocus, onBlur, variants }) => {
+const Textarea = ({
+  value,
+  onChange,
+  id,
+  label,
+  focus,
+  onFocus,
+  onBlur,
+  variants,
+}) => {
   return (
-    <InputContainer height="auto" variants={variants} >
+    <InputContainer height="auto" variants={variants}>
       <Label
         animate={focus ? "focused" : "default"}
         variants={label}
@@ -32,8 +41,8 @@ const Textarea = ({ id, label, focus, input, onChange, onFocus, onBlur, variants
         {id}
       </Label>
       <StyledTextarea
+        value={value}
         id={id}
-        value={input}
         name={id}
         onChange={onChange}
         onFocus={onFocus}

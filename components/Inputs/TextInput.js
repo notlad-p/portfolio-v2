@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import Textarea from "./Textarea";
@@ -34,15 +34,18 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ id, type, textarea, variants }) => {
-  const [input, setInput] = useState("");
+const Input = ({ value, onChange, id, type, textarea, variants }) => {
   const [focus, setFocus] = useState(false);
 
-  const onChange = (e) => setInput(e.target.value);
   const onFocus = () => setFocus(true);
-  const onBlur = () => {
-    if (input === "") setFocus(false);
+  const onBlur = (e) => {
+    if (e.target.value === "") setFocus(false);
   };
+
+  // reset focus after successful submit
+  useEffect(() => {
+    if (value === "") setFocus(false);
+  }, [value]);
 
   const label = {
     default: {
@@ -62,10 +65,10 @@ const Input = ({ id, type, textarea, variants }) => {
   if (textarea)
     return (
       <Textarea
+        value={value}
         id={id}
         label={label}
         focus={focus}
-        input={input}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -74,7 +77,7 @@ const Input = ({ id, type, textarea, variants }) => {
     );
 
   return (
-    <InputContainer height="64px" variants={variants}  >
+    <InputContainer height="64px" variants={variants}>
       <Label
         animate={focus ? "focused" : "default"}
         variants={label}
@@ -83,8 +86,7 @@ const Input = ({ id, type, textarea, variants }) => {
         {id}
       </Label>
       <StyledInput
-        id={id}
-        value={input}
+        value={value}
         name={id}
         type={type}
         onChange={onChange}
