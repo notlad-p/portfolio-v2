@@ -8,6 +8,12 @@ const CopyContainer = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
+
+  @media (max-width: 450px) {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
 `;
 
 const IconContainer = styled(motion.div)`

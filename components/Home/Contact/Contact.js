@@ -21,6 +21,10 @@ const HeadingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+  }
 `;
 
 const Contact = () => {
@@ -102,7 +106,7 @@ const Contact = () => {
   return (
     <SectionContainer id="contact">
       <HeadingContainer>
-        <Heading text="Contact" />
+        <Heading text="Contact" noMargin />
         <CopyEmail />
       </HeadingContainer>
       <Form

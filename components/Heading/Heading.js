@@ -6,7 +6,7 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: ${({ noMargin }) => noMargin ? '0px' : '40px'};
 `;
 
 const SectionHeading = styled(motion.h2)`
@@ -15,14 +15,14 @@ const SectionHeading = styled(motion.h2)`
   opacity: 0;
 `;
 
-const Heading = ({ text }) => {
+const Heading = ({ text, noMargin }) => {
   const { ref, inView } = useInView({
     threshold: 1,
     triggerOnce: true,
   });
 
   return (
-    <TitleContainer ref={ref}>
+    <TitleContainer ref={ref} noMargin={noMargin} >
       <SectionHeading
         animate={{ y: inView ? 0 : 16, opacity: inView ? 1 : 0 }}
         transition={{ type: "spring", mass: 0.5, bounce: 0 }}
