@@ -13,23 +13,6 @@ import Footer from "../../Footer/Footer";
 
 softShadows();
 
-// function Box({ text, color, ...props }) {
-//   const [hovered, set] = useState(false);
-//   return (
-//     <mesh
-//       {...props}
-//       onPointerOver={(e) => set(true)}
-//       onPointerOut={(e) => set(false)}
-//     >
-//       <boxGeometry args={[2, 2, 0.25]} />
-//       <meshStandardMaterial color={hovered ? "hotpink" : color} wireframe />
-//       <Html position={[0, 0, 1]} className="label" center>
-//         {text}
-//       </Html>
-//     </mesh>
-//   );
-// }
-
 function ScrollContainer({ scroll, children }) {
   const { viewport } = useThree();
   const group = useRef();
@@ -48,12 +31,6 @@ function Scene() {
 
   return (
     <>
-      {/* <Box text={<span>This is HTML</span>} color="aquamarine" />
-      <Box
-        text={<h1>H1 caption</h1>}
-        color="lightblue"
-        position={[0, -viewport.height / 2 - 1.5, 0]}
-      /> */}
       <Planet />
       <Stars count={1000} factor={2} />
     </>
@@ -65,6 +42,7 @@ const Scroll = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
   top: 0;
   left: 0;
 `;
