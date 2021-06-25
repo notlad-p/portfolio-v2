@@ -10,23 +10,21 @@ Personal portfolio built with [Next.js](https://nextjs.org/) and hosted by [Verc
 **[View Project >>](https://www.daltonp.dev/)**
 
 <!-- Major frameworks used -->
-### Built With
+## Built With
 
 * [Next.js](https://nextjs.org/)
 * [React](https://reactjs.org/)
 * [Styled Components](https://styled-components.com/)
 
 <!-- Contact info -->
-### Contact
+## Contact
 
 Dalton - contact@daltonp.dev
 
 <!-- Libraries used -->
-### Acknowledgements
+## Acknowledgements
 
 * [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer#readme)
 * [Styled Icons](https://styled-icons.js.org/)
 * [React Three Fiber](https://github.com/pmndrs/react-three-fiber)
 * [Framer Motion](https://www.framer.com/api/motion/)
-
-<hr />
