@@ -37,7 +37,7 @@ const projectData = [
       "3D version of my personal logo, originally the header of this portfolio. Beware it is very CPU and GPU intensive.",
     image: (
       <Image
-        src="/projects/dp-logo.PNG"
+        src="/projects/dp-logo.JPG"
         layout="fill"
         objectFit="cover"
       />
