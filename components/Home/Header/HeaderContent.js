@@ -32,7 +32,7 @@ const Container = styled(motion.div)`
 
   @media (max-width: 408px) {
     left: 47.5%;
-    transform: scale(0.9) translate(-50%, -50%);
+    transform: scale(0.9) translate(-50%, -75%);
   }
 
   @media (max-width: 332px) {

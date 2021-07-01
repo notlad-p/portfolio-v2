@@ -39,7 +39,7 @@ const Contact = () => {
     error: false,
   });
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.75,
     triggerOnce: true,
   });
 

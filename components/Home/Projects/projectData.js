@@ -49,7 +49,7 @@ const projectData = [
   {
     title: "Pair Matching Game",
     description:
-      "Sea themed pair matching game using the Fisher Yates shuffle.",
+      "Sea themed pair matching game using the Fisher Yates shuffle and CSS animation.",
     image: (
       <Image
         src="/projects/pairmatching.JPG"
@@ -63,7 +63,7 @@ const projectData = [
   },
   {
     title: "Neumorphic Calculator",
-    description: "A calculator I built for a Free Code Camp project.",
+    description: "A calculator I built for a Free Code Camp project, using neumorphic design.",
     image: (
       <Image
         src="/projects/neumorphic-calc.JPG"
