@@ -8,14 +8,14 @@ const Projects = () => {
     <SectionContainer id='projects' >
       <Heading text="Projects" />
       {data.map(
-        ({ title, description, image, tech, githubLink, projectLink }, i) => (
+        ({ title, description, image, tech, codeLink, projectLink }, i) => (
           <Project
             key={i}
             title={title}
             description={description}
             image={image}
             tech={tech}
-            githubLink={githubLink}
+            codeLink={codeLink}
             projectLink={projectLink}
             flip={i % 2 === 0}
             last={i === data.length - 1}

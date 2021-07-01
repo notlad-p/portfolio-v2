@@ -13,7 +13,7 @@ const projectData = [
       />
     ),
     tech: ["React", "SASS", "Material UI"],
-    githubLink: "https://github.com/notlad-p/rent-a-car",
+    codeLink: "https://github.com/notlad-p/rent-a-car",
     projectLink: "https://notlad-p.github.io/rent-a-car/",
   },
   {
@@ -28,13 +28,13 @@ const projectData = [
       />
     ),
     tech: ["VantaJS", "JSON", "JavaScript"],
-    githubLink: "https://github.com/notlad-p/dash",
+    codeLink: "https://github.com/notlad-p/dash",
     projectLink: "https://dash-browser-extension.netlify.app/",
   },
   {
     title: "3D Logo",
     description:
-      "3D version of my personal logo, originally the header of this portfolio. Beware it is very CPU and GPU intensive.",
+      "3D version of my original logo, beware it is very CPU and GPU intensive.",
     image: (
       <Image
         src="/projects/3d-logo.jpg"
@@ -43,7 +43,7 @@ const projectData = [
       />
     ),
     tech: ["React", "React Three Fiber"],
-    githubLink: "https://codesandbox.io/s/dp-logo-1d7cb",
+    codeLink: "https://codesandbox.io/s/dp-logo-1d7cb",
     projectLink: "https://codesandbox.io/s/dp-logo-1d7cb",
   },
   {
@@ -58,22 +58,22 @@ const projectData = [
       />
     ),
     tech: ["JavaScript", "CSS", "HTML"],
-    githubLink: "https://github.com/notlad-p/pair-matching-game",
+    codeLink: "https://github.com/notlad-p/pair-matching-game",
     projectLink: "https://notlad-p.github.io/pair-matching-game/",
   },
   {
-    title: "iPhone Calculator Clone",
-    description: "An iPhone calculator clone built in vanilla JavaScript.",
+    title: "Neumorphic Calculator",
+    description: "A calculator I built for a Free Code Camp project.",
     image: (
       <Image
-        src="/projects/iphone-calc.JPG"
+        src="/projects/neumorphic-calc.JPG"
         layout="fill"
         objectFit="cover"
       />
     ),
-    tech: ["JavaScript", "CSS", "HTML"],
-    githubLink: "https://github.com/notlad-p/iphone-calculator",
-    projectLink: "https://notlad-p.github.io/iphone-calculator/",
+    tech: ["React", "Styled Components"],
+    codeLink: "https://codepen.io/daltronp/pen/ZELVprN",
+    projectLink: "https://codepen.io/daltronp/full/ZELVprN",
   },
 ];
 

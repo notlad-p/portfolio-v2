@@ -191,7 +191,7 @@ const Project = ({
   description,
   image,
   tech,
-  githubLink,
+  codeLink,
   projectLink,
   flip,
 }) => {
@@ -253,7 +253,7 @@ const Project = ({
           </TagsContainer>
           <ProjectDescription variants={item}>{description}</ProjectDescription>
           <motion.div variants={item}>
-            <a href={githubLink} target='_blank' rel="noopener noreferrer" ><Button text>Code</Button></a>
+            <a href={codeLink} target='_blank' rel="noopener noreferrer" ><Button text>Code</Button></a>
             <a href={projectLink} target='_blank' rel="noopener noreferrer" ><Button text>Project</Button></a>
           </motion.div>
         </ContentContainer>
