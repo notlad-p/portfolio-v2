@@ -106,7 +106,7 @@ const Contact = () => {
   return (
     <SectionContainer id="contact">
       <HeadingContainer>
-        <Heading text="Contact" noMargin />
+        <Heading text="Contact" />
         <CopyEmail />
       </HeadingContainer>
       <Form
