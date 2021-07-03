@@ -4,7 +4,6 @@ import { Canvas as C, useFrame, useThree } from "@react-three/fiber";
 import { Stars, softShadows, useProgress, Html } from "@react-three/drei";
 import styled from "styled-components";
 
-import Effects from "./Effects";
 import Planet from "./Planet";
 import Header from "../Header/Header";
 import Projects from "../Projects/Projects";
@@ -65,7 +64,6 @@ const Canvas = () => {
         }}
       >
         <Suspense fallback={null}>
-          {/* <Effects /> */}
           <ScrollContainer scroll={scroll}>
             <Scene />
           </ScrollContainer>
