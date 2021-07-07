@@ -62,12 +62,18 @@ const Input = ({ value, onChange, id, type, textarea, variants }) => {
     },
   };
 
+  const transition = {
+    type: 'tween',
+    duration: 0.15,
+  }
+
   if (textarea)
     return (
       <Textarea
         value={value}
         id={id}
         label={label}
+        transition={transition}
         focus={focus}
         onChange={onChange}
         onFocus={onFocus}
@@ -81,6 +87,7 @@ const Input = ({ value, onChange, id, type, textarea, variants }) => {
       <Label
         animate={focus ? "focused" : "default"}
         variants={label}
+        transition={transition}
         htmlFor={id}
       >
         {id}

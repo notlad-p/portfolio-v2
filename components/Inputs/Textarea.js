@@ -26,6 +26,7 @@ const Textarea = ({
   onChange,
   id,
   label,
+  transition,
   focus,
   onFocus,
   onBlur,
@@ -36,6 +37,7 @@ const Textarea = ({
       <Label
         animate={focus ? "focused" : "default"}
         variants={label}
+        transition={transition}
         htmlFor={id}
       >
         {id}
