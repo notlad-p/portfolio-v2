@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useRef, Suspense, useEffect } from "react";
 import { Canvas as C, useFrame, useThree } from "@react-three/fiber";
-import { Stars, softShadows, useProgress, Html } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import styled from "styled-components";
 
 import Planet from "./Planet";
@@ -9,8 +9,6 @@ import Header from "../Header/Header";
 import Projects from "../Projects/Projects";
 import Contact from "../Contact/Contact";
 import Footer from "../../Footer/Footer";
-
-softShadows();
 
 function ScrollContainer({ scroll, children }) {
   const { viewport } = useThree();
