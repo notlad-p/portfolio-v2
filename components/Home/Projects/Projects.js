@@ -17,8 +17,6 @@ const Projects = () => {
             tech={tech}
             codeLink={codeLink}
             projectLink={projectLink}
-            flip={i % 2 === 0}
-            last={i === data.length - 1}
           />
         )
       )}

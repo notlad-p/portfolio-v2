@@ -1,80 +1,63 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import Button from "../../Button";
-import Borders from './Borders';
 
-const ProjectContainer = styled(motion.div)`
-  width: 100%;
-  height: 100%;
+const Container = styled(motion.div)`
+  display: flex;
+  margin-bottom: 96px;
+  background-color: rgba(255, 255, 255, 0.02);
+
+  @media (max-width: 1050px) {
+    flex-direction: column-reverse;
+  } ;
+`;
+
+const ContentContainer = styled(motion.div)`
   display: flex;
   align-items: center;
-  flex-direction: ${({ flip }) => (flip ? "row-reverse" : "row")};
+  width: 323px;
+  padding: 0 28px;
   background-color: rgba(255, 255, 255, 0.05);
 
   @media (max-width: 1050px) {
-    flex-direction: column;
-    align-items: unset;
-  }
+    width: 100%;
+    padding: 32px 28px;
+  } ;
 `;
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 700px;
-  height: 100%;
-  @media (max-width: 1050px) {
-    width: 100%;
-    height: 56.25vw;
-  };
-  @media (max-width: 450px) {
-    max-height: 298px;
-  };
-`;
-
-const ImageOverlay = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.primary};
-  z-index: 2;
-`;
-
-const ContentContainer = styled(motion.div)`
-  padding: 0px 8px 8px 8px;
-  width: 40%;
+  width: 600px;
+  height: 337px;
 
   @media (max-width: 1050px) {
     width: 100%;
-  }
+    height: auto;
+    padding-bottom: 56.25%;
+  } ;
 `;
 
-const ProjectTitle = styled(motion.h3)`
-  margin: 16px 8px;
-  font-size: 24px;
-`;
-
-const TagsContainer = styled(motion.div)`
-  margin: 0 4px 16px 4px;
+const Title = styled(motion.h3)`
+  margin: 0;
+  padding-bottom: 24px;
+  font-size: 22px;
 `;
 
 const Tag = styled.span`
   display: inline-flex;
   align-items: center;
   padding: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-right: 8px;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.background};
   font-size: 12px;
   text-align: center;
 `;
 
-const ProjectDescription = styled(motion.p)`
-  margin: 0 8px 16px 8px;
+const Description = styled(motion.p)`
+  margin: 16px 0 24px 0;
   color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
@@ -85,9 +68,7 @@ const Project = ({
   tech,
   codeLink,
   projectLink,
-  flip,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.75,
     triggerOnce: true,
@@ -112,45 +93,50 @@ const Project = ({
   };
 
   const item = {
-    hidden: { opacity: 0, y: 16, clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-    show: { opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
+    hidden: {
+      opacity: 0,
+      y: 16,
+      clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    },
   };
 
   return (
-    <Borders
-      flip={flip}
-      isHovered={isHovered}
-      inView={inView}
-      setIsHovered={setIsHovered}
+    <Container
+      ref={ref}
+      variants={container}
+      animate={inView ? "show" : "hidden"}
     >
-      <ProjectContainer
-        flip={flip}
-        ref={ref}
-        variants={container}
+      <ContentContainer
+        variants={contentContainer}
         animate={inView ? "show" : "hidden"}
       >
-        <ImageContainer>
-          <ImageOverlay animate={{ opacity: isHovered ? 0 : 0.35 }} />
-          {image}
-        </ImageContainer>
-        <ContentContainer
-          variants={contentContainer}
-          animate={inView ? "show" : "hidden"}
-        >
-          <ProjectTitle variants={item}>{title}</ProjectTitle>
-          <TagsContainer variants={item}>
-            {tech.map((t, i) => (
-              <Tag key={i}>{t}</Tag>
-            ))}
-          </TagsContainer>
-          <ProjectDescription variants={item}>{description}</ProjectDescription>
+        <div>
+          <Title variants={item}>{title}</Title>
           <motion.div variants={item}>
-            <a href={codeLink} target='_blank' rel="noopener noreferrer" ><Button text>Code</Button></a>
-            <a href={projectLink} target='_blank' rel="noopener noreferrer" ><Button text>Project</Button></a>
+            {tech.map((tag, i) => (
+              <Tag key={i}>{tag}</Tag>
+            ))}
           </motion.div>
-        </ContentContainer>
-      </ProjectContainer>
-    </Borders>
+          <Description variants={item}>{description}</Description>
+          <motion.div variants={item}>
+            {codeLink && (
+              <a href={codeLink} target="_blank" rel="noopener noreferrer">
+                <Button text>Code</Button>
+              </a>
+            )}
+            <a href={projectLink} target="_blank" rel="noopener noreferrer">
+              <Button text>Project</Button>
+            </a>
+          </motion.div>
+        </div>
+      </ContentContainer>
+      <ImageContainer>{image}</ImageContainer>
+    </Container>
   );
 };
 

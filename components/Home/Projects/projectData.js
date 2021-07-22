@@ -4,7 +4,7 @@ const projectData = [
   {
     title: "Rent-a-Car",
     description:
-      "Fictional car rental site built in React, using the Material UI component library.",
+      "Fictional car rental site built with React, using the Material UI component library.",
     image: (
       <Image
         src="/projects/rentacar.JPG"
@@ -15,6 +15,21 @@ const projectData = [
     tech: ["React", "SASS", "Material UI"],
     codeLink: "https://github.com/notlad-p/rent-a-car",
     projectLink: "https://notlad-p.github.io/rent-a-car/",
+  },
+  {
+    title: "RC Bell Carpentry",
+    description:
+      "UI design for a local carpenter to display his portfolio and have an easy way to contact him.",
+    image: (
+      <Image
+        src="/projects/rc-bell.JPG"
+        layout="fill"
+        objectFit="cover"
+      />
+    ),
+    tech: ["InVision Studio"],
+    codeLink: null,
+    projectLink: "https://dalton364671.invisionapp.com/prototype/ckrch1m6e008ne101s041nldl/play",
   },
   {
     title: "Dash - New Tab Page",
@@ -45,21 +60,6 @@ const projectData = [
     tech: ["React", "React Three Fiber"],
     codeLink: "https://codesandbox.io/s/dp-logo-1d7cb",
     projectLink: "https://codesandbox.io/s/dp-logo-1d7cb",
-  },
-  {
-    title: "Pair Matching Game",
-    description:
-      "Sea themed pair matching game using the Fisher Yates shuffle and CSS animation.",
-    image: (
-      <Image
-        src="/projects/pairmatching.JPG"
-        layout="fill"
-        objectFit="cover"
-      />
-    ),
-    tech: ["JavaScript", "CSS", "HTML"],
-    codeLink: "https://github.com/notlad-p/pair-matching-game",
-    projectLink: "https://notlad-p.github.io/pair-matching-game/",
   },
   {
     title: "Neumorphic Calculator",
