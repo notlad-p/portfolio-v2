@@ -9,7 +9,7 @@ const TitleContainer = styled.div`
   margin-bottom: 32px;
 
   @media (max-width: 450px) {
-    margin-bottom: 0px;
+    margin-bottom: 16px;
   }
 `;
 
