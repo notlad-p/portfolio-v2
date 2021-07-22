@@ -18,9 +18,9 @@ const BorderButton = styled(motion.button)`
 const TextButton = styled(motion.button)`
   margin-right: 8px;
   padding: 8px 8px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(51, 149, 214, 0.1);
   border: none;
-  font-size: 15px;
+  font-size: 14px;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
@@ -31,7 +31,7 @@ const Button = ({ children, style, text, variants }) => {
     return (
       <TextButton
         variants={variants}
-        whileHover={{ backgroundColor: "rgba(51, 149, 214, 0.1)" }}
+        whileHover={{ color: "#E9E9E9" }}
       >
         {children}
       </TextButton>
