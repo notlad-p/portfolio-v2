@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const SectionContainer = styled.div`
   position: relative;
-  max-width: 1000px;
+  max-width: 904px;
   margin: 64px auto;
 
   @media (max-width: 1050px) {
