@@ -21,6 +21,7 @@ const IconContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin-right: 4px;
   border-radius: 100%;
   cursor: pointer;
 `;
@@ -67,7 +68,6 @@ const CopyEmail = () => {
           onMouseOut={handleMouseOut}
           whileHover={{
             backgroundColor: "rgba(51, 149, 214, 0.1)",
-            scale: 1.1,
           }}
           whileTap={{ scale: 1 }}
         >

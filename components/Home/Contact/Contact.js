@@ -20,6 +20,7 @@ const Form = styled(motion.form)`
 const HeadingContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   width: 100%;
 
   @media (max-width: 450px) {
