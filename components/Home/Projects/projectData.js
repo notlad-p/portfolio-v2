@@ -22,7 +22,7 @@ const projectData = [
       "UI design for a local carpenter to display his portfolio and have an easy way to contact him.",
     image: (
       <Image
-        src="/projects/rc-bell.JPG"
+        src="/projects/rc-bell.jpg"
         layout="fill"
         objectFit="cover"
       />
