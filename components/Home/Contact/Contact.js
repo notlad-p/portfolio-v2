@@ -34,11 +34,13 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
   const [status, setStatus] = useState({
     pending: false,
     success: false,
     error: false,
   });
+
   const { ref, inView } = useInView({
     threshold: 0.75,
     triggerOnce: true,
@@ -85,7 +87,14 @@ const Contact = () => {
 
     // send request
     axios
-      .post("http://localhost:3000/api/contact", formVals)
+      .post(
+        `${
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:3000"
+            : "https://www.daltonp.dev"
+        }/api/contact`,
+        formVals
+      )
       .then((res) => {
         console.log(res);
         if (res.data === "sent") {
