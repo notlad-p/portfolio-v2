@@ -61,6 +61,7 @@ const Line = styled(motion.div)`
 `;
 
 const Text = styled(motion.p)`
+  max-width: 320px;
   margin-top: 16px;
   margin-bottom: 32px;
   color: ${({ theme }) => theme.colors.textSecondary};
@@ -99,7 +100,7 @@ const HeaderContent = () => {
       <HeadingOne variants={item}>Hello, I'm Dalton</HeadingOne>
       <Line variants={item} />
       <Text variants={item}>
-        I'm a developer who enjoys building web stuff.
+        I'm a developer who enjoys building web apps in React. You can check out some of my projects below.
       </Text>
       <Link containerId="scroll" to="projects" smooth offset={-64} >
         <Button variants={item} style={{ marginRight: "16px" }}>
