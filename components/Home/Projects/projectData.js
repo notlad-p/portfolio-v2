@@ -2,6 +2,21 @@ import Image from "next/image";
 
 const projectData = [
   {
+    title: "Peak Paw Sitting",
+    description:
+      "Site for local pet sitter to display her services and brand image to customers.",
+    image: (
+      <Image
+        src="/projects/peakpawsitting.JPG"
+        layout="fill"
+        objectFit="cover"
+      />
+    ),
+    tech: ["Next.js", "Strapi", "Material UI"],
+    codeLink: null,
+    projectLink: "https://peakpawsitting.com",
+  },
+  {
     title: "Rent-a-Car",
     description:
       "Fictional car rental site built with React, using the Material UI component library.",
