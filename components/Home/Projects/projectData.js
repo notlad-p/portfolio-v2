@@ -7,7 +7,7 @@ const projectData = [
       "Site for local pet sitter to display her services and brand image to customers.",
     image: (
       <Image
-        src="/projects/peakpawsitting.JPG"
+        src="/projects/peakpawsitting.jpg"
         layout="fill"
         objectFit="cover"
       />
