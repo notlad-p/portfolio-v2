@@ -4,7 +4,7 @@ const projectData = [
   {
     title: "919 Down Hill",
     description:
-      "Ecommerce site for local longboarding company, with the purpose of easy ordering for customers and easy order managment for the business owner.",
+      "Ecommerce site for longboarding company, with the purpose of easy ordering for customers and easy order managment for the business owner.",
     image: (
       <Image
         src="/projects/919dhwheelco.JPG"
@@ -19,7 +19,7 @@ const projectData = [
   {
     title: "Peak Paw Sitting",
     description:
-      "Site for local pet sitter to display her services and brand image to customers.",
+      "Site for pet sitter to display her services and brand image to customers.",
     image: (
       <Image
         src="/projects/peakpawsitting.jpg"
