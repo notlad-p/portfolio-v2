@@ -2,6 +2,21 @@ import Image from "next/image";
 
 const projectData = [
   {
+    title: "919 Down Hill",
+    description:
+      "Ecommerce site for local longboarding company, with the purpose of easy ordering for customers and easy order managment for the business owner.",
+    image: (
+      <Image
+        src="/projects/919dhwheelco.JPG"
+        layout="fill"
+        objectFit="cover"
+      />
+    ),
+    tech: ["Next.js", "Stripe", "Material UI"],
+    codeLink: null,
+    projectLink: "https://919dhwheelco.com",
+  },
+  {
     title: "Peak Paw Sitting",
     description:
       "Site for local pet sitter to display her services and brand image to customers.",

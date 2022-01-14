@@ -135,7 +135,12 @@ const Project = ({
           </motion.div>
         </div>
       </ContentContainer>
-      <ImageContainer>{image}</ImageContainer>
+
+      <ImageContainer>
+        <a href={projectLink} target="_blank" rel="noopener noreferrer">
+          {image}
+        </a>
+      </ImageContainer>
     </Container>
   );
 };
